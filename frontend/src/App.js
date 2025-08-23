@@ -14,10 +14,7 @@ function App() {
     // Base URL for API calls. IMPORTANT: Change this for deployment!
     // For local development, 'proxy' in package.json handles this.
     // For Netlify deployment, replace this with your Render backend URL.
-    const API_BASE_URL = process.env.NODE_ENV === 'production'
-        ? 'YOUR_RENDER_BACKEND_URL_HERE' // <<< CHANGE THIS FOR DEPLOYMENT >>>
-        : 'http://localhost:5000'; // Development URL handled by proxy
-
+   const API_BASE_URL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000';
     const fetchTasks = useCallback(async () => {
         setLoading(true);
         setError(null);
