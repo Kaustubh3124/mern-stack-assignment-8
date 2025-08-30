@@ -20,14 +20,14 @@ app.use(express.json());
 
 app.use(cors());
 
-.
+
 app.use('/api/tasks', taskRoutes);
 
 
 app.use((err, req, res, next) => {
    
     console.error(err.stack.red);
-    .
+    
     res.status(err.statusCode || 500).json({
         success: false,
         error: err.message || 'Server Error'
