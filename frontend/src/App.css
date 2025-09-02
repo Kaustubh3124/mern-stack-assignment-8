@@ -6,41 +6,41 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f2f5; /* Light background */
-  color: #333; /* Dark text */
+  background-color: #f0f2f5; 
+  color: #333; 
 }
 
 .App {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensures app takes full viewport height */
+  min-height: 100vh; 
 }
 
 /* Header */
 .App-header {
-  background-color: #282c34; /* Dark header background */
-  padding: 1.5rem 1rem; /* Responsive padding */
+  background-color: #282c34; 
+  padding: 1.5rem 1rem; 
   color: white;
   text-align: center;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
 }
 
 .App-header h1 {
-  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
+  font-size: clamp(2rem, 5vw, 3rem); 
   margin-bottom: 0.5rem;
 }
 
 /* Main Content Area */
 .App-main {
-  flex-grow: 1; /* Allows main content to expand */
+  flex-grow: 1; 
   padding: 2rem 1rem;
-  max-width: 90rem; /* Max width for content */
-  margin: 0 auto; /* Center content */
-  width: 100%; /* Ensure it takes full width within max-width */
-  box-sizing: border-box; /* Include padding in width */
+  max-width: 90rem; 
+  margin: 0 auto; 
+  width: 100%; 
+  box-sizing: border-box; 
 }
 
-/* Messages (Loading, Error, No Tasks) */
+
 .message {
   padding: 1rem;
   margin: 1.5rem 0;
@@ -51,23 +51,23 @@ body {
 }
 
 .message.loading {
-  background-color: #e0f7fa; /* Light blue */
-  color: #007bff; /* Primary blue */
+  background-color: #e0f7fa; 
+  color: #007bff; 
 }
 
 .message.error {
-  background-color: #ffebee; /* Light red */
-  color: #dc3545; /* Error red */
+  background-color: #ffebee; 
+  color: #dc3545; 
   border: 0.0625rem solid #dc3545;
 }
 
 .message.no-tasks {
-  background-color: #f8f9fa; /* Very light gray */
-  color: #6c757d; /* Muted gray */
+  background-color: #f8f9fa; 
+  color: #6c757d; 
   border: 0.0625rem solid #ced4da;
 }
 
-/* Form Styles (TaskForm.js) */
+
 .task-form {
   background-color: white;
   padding: 1.5rem;
@@ -99,7 +99,7 @@ body {
 .task-form input[type="date"],
 .task-form textarea,
 .task-form select {
-  width: calc(100% - 1.2rem); /* Full width minus padding */
+  width: calc(100% - 1.2rem); 
   padding: 0.6rem;
   border: 0.0625rem solid #ced4da;
   border-radius: 0.25rem;
@@ -108,12 +108,12 @@ body {
 }
 
 .task-form textarea {
-  resize: vertical; /* Allow vertical resizing */
+  resize: vertical; 
   min-height: 5rem;
 }
 
 .btn-primary {
-  background-color: #007bff; /* Primary blue button */
+  background-color: #007bff; 
   color: white;
   padding: 0.75rem 1.5rem;
   border: none;
@@ -126,16 +126,16 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; 
 }
 
-/* Controls (Filter/Search) */
+
 .controls {
     display: flex;
     gap: 1rem;
     margin-bottom: 2rem;
     justify-content: center;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
+    flex-wrap: wrap; 
 }
 
 .search-input {
@@ -143,7 +143,7 @@ body {
     border: 0.0625rem solid #ced4da;
     border-radius: 0.25rem;
     font-size: 1rem;
-    width: clamp(10rem, 30vw, 20rem); /* Responsive width */
+    width: clamp(10rem, 30vw, 20rem); 
     box-sizing: border-box;
 }
 
@@ -156,7 +156,7 @@ body {
     box-sizing: border-box;
 }
 
-/* Task List Styles (TaskList.js) */
+
 .task-list-container h2 {
   font-size: 2rem;
   color: #343a40;
@@ -166,31 +166,31 @@ body {
 
 .task-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); /* Responsive grid columns */
-  gap: 1.5rem; /* Gap between grid items */
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); 
+  gap: 1.5rem; 
 }
 
-/* Task Item Styles (TaskItem.js) */
+
 .task-item {
   background-color: white;
   padding: 1.2rem;
   border-radius: 0.5rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.08);
-  border-left: 0.4rem solid #007bff; /* Accent border */
+  border-left: 0.4rem solid #007bff; 
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .task-item.completed {
-  border-left-color: #28a745; /* Green for completed tasks */
+  border-left-color: #28a745; 
   opacity: 0.8;
-  background-color: #e9f5ee; /* Lighter background for completed */
+  background-color: #e9f5ee; 
 }
 
 .task-item:hover {
-  transform: translateY(-0.25rem); /* Slight lift on hover */
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  transform: translateY(-0.25rem); 
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); 
 }
 
 .task-header {
@@ -201,14 +201,14 @@ body {
 
 .task-header input[type="checkbox"] {
   margin-right: 0.8rem;
-  transform: scale(1.2); /* Slightly larger checkbox */
+  transform: scale(1.2); 
   cursor: pointer;
 }
 
 .task-header h3 {
   margin: 0;
   font-size: 1.2rem;
-  flex-grow: 1; /* Title takes available space */
+  flex-grow: 1; 
   text-align: left;
 }
 
@@ -222,7 +222,7 @@ body {
   padding: 0.3rem 0.6rem;
   border-radius: 0.25rem;
   font-weight: 600;
-  white-space: nowrap; /* Prevent wrapping */
+  white-space: nowrap; /
 }
 
 /* Priority Colors */
@@ -248,11 +248,11 @@ body {
 .task-actions {
   display: flex;
   gap: 0.8rem;
-  margin-top: auto; /* Pushes buttons to the bottom of the card */
-  justify-content: flex-end; /* Align buttons to the right */
+  margin-top: auto; 
+  justify-content: flex-end; 
 }
 
-/* Button Styles (Edit, Delete, Secondary) */
+
 .btn-edit, .btn-delete, .btn-secondary {
   padding: 0.5rem 1rem;
   border: none;
@@ -263,7 +263,7 @@ body {
 }
 
 .btn-edit {
-  background-color: #ffc107; /* Warning yellow */
+  background-color: #ffc107; 
   color: #333;
 }
 
@@ -272,7 +272,7 @@ body {
 }
 
 .btn-delete {
-  background-color: #dc3545; /* Danger red */
+  background-color: #dc3545; 
   color: white;
 }
 
@@ -281,25 +281,25 @@ body {
 }
 
 .btn-secondary {
-    background-color: #6c757d; /* Muted gray */
+    background-color: #6c757d; 
     color: white;
 }
 .btn-secondary:hover {
     background-color: #5a6268;
 }
 
-/* Modal Overlay for Edit Form */
+
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.7); 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure it's on top */
+    z-index: 1000; 
 }
 
 .modal-content {
@@ -307,8 +307,8 @@ body {
     padding: 2rem;
     border-radius: 0.5rem;
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
-    max-width: 30rem; /* Max width for modal */
-    width: 90%; /* Responsive width */
+    max-width: 30rem; 
+    width: 90%; 
     position: relative;
     text-align: center;
 }
@@ -335,7 +335,7 @@ body {
     padding: 1rem 0.5rem;
   }
   .task-list {
-    grid-template-columns: 1fr; /* Single column on small screens */
+    grid-template-columns: 1fr; 
   }
   .controls {
     flex-direction: column;

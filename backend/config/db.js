@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
-const colors = require('colors'); // Optional: for colorful console logs
+const colors = require('colors'); 
 
-// Function to connect to MongoDB
+
 const connectDB = async () => {
     try {
-        // Mongoose connects to the MongoDB database using the URI from environment variables
+        
         const conn = await mongoose.connect(process.env.MONGO_URI);
 
         console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline.bold);
     } catch (error) {
-        // If connection fails, log the error and exit the process
+        
         console.error(`Error: ${error.message}`.red.bold);
-        process.exit(1); // Exit process with failure
+        process.exit(1); 
     }
 };
 
-module.exports = connectDB; // Export the connection function
+module.exports = connectDB; 

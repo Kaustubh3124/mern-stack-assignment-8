@@ -31,7 +31,7 @@ function TaskForm({ onSubmit, initialData = null }) {
             priority
         };
         onSubmit(taskData);
-        // Clear form fields only if it's for adding a new task (not editing)
+        
         if (!initialData) {
             setTitle('');
             setDescription('');

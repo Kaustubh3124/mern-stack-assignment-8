@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import TaskItem from './TaskItem'; // Individual task component
-import TaskForm from './TaskForm'; // Re-use for editing in a modal
+import TaskItem from './TaskItem'; 
+import TaskForm from './TaskForm'; 
 
 function TaskList({ tasks, onUpdate, onDelete, onToggleComplete }) {
-    const [editingTask, setEditingTask] = useState(null); // State to hold the task currently being edited
+    const [editingTask, setEditingTask] = useState(null); 
 
     const handleEditClick = (task) => {
-        setEditingTask(task); // Set the task data to the editing state
+        setEditingTask(task); 
     };
 
     const handleUpdateSubmit = (updatedData) => {
-        // Call the parent's onUpdate function with the task ID and updated data
+        
         onUpdate(editingTask._id, updatedData);
-        setEditingTask(null); // Close the edit modal after update
+        setEditingTask(null); 
     };
 
     return (
@@ -32,7 +32,7 @@ function TaskList({ tasks, onUpdate, onDelete, onToggleComplete }) {
                 {/* Map through tasks and render TaskItem for each */}
                 {tasks.map(task => (
                     <TaskItem
-                        key={task._id} // Use MongoDB's _id as the unique key
+                        key={task._id} 
                         task={task}
                         onEdit={handleEditClick}
                         onDelete={onDelete}

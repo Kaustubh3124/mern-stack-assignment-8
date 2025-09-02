@@ -9,7 +9,7 @@ function App() {
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [filterStatus, setFilterStatus] = useState('all'); // 'all', 'completed', 'pending'
+    const [filterStatus, setFilterStatus] = useState('all'); 
     const [searchQuery, setSearchQuery] = useState('');
 
     // Base URL for API calls. IMPORTANT: Change this for deployment!
@@ -20,14 +20,14 @@ function App() {
         setLoading(true);
         setError(null);
         try {
-            let url = `${API_BASE_URL}/api/tasks`; // Start with base tasks endpoint
+            let url = `${API_BASE_URL}/api/tasks`; 
 
             const params = {};
-            // Add filter parameters if not 'all'
+            
             if (filterStatus !== 'all') {
                 params.status = filterStatus;
             }
-            // If there's a search query, adjust URL to search endpoint and add query param
+            
             if (searchQuery) {
                 url = `${API_BASE_URL}/api/tasks/search`;
                 params.query = searchQuery;
@@ -42,7 +42,7 @@ function App() {
         } finally {
             setLoading(false);
         }
-    }, [filterStatus, searchQuery]); // Re-fetch when filter, search query, or base URL changes
+    }, [filterStatus, searchQuery]); 
 
     useEffect(() => {
         fetchTasks();

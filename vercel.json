@@ -14,10 +14,7 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/api/tasks/:path*",
-      "destination": "/backend/server.js"
-    },
+   
     {
       "source": "/(.*)",
       "destination": "/frontend/build/$1"
