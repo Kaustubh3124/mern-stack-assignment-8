@@ -15,17 +15,17 @@ exports.getTasks = async (req, res) => {
         }
 
         // Sorting options
-        const sortBy = req.query.sortBy || 'createdAt'; // Default sort by creation date
-        const sortOrder = req.query.order === 'desc' ? -1 : 1; // 1 for ascending, -1 for descending
+        const sortBy = req.query.sortBy || 'createdAt'; 
+        const sortOrder = req.query.order === 'desc' ? -1 : 1; 
 
         // Pagination options
-        const page = parseInt(req.query.page) || 1; // Current page number
-        const limit = parseInt(req.query.limit) || 10; // Number of items per page
-        const skip = (page - 1) * limit; // Number of items to skip
+        const page = parseInt(req.query.page) || 1; 
+        const limit = parseInt(req.query.limit) || 10; 
+        const skip = (page - 1) * limit; 
 
-        // Fetch tasks from the database with filtering, sorting, and pagination
+        
         const tasks = await Task.find(query)
-                                .sort({ [sortBy]: sortOrder }) // Dynamic sorting
+                                .sort({ [sortBy]: sortOrder }) 
                                 .skip(skip)
                                 .limit(limit);
 
@@ -35,11 +35,11 @@ exports.getTasks = async (req, res) => {
         // Send successful response with data and metadata
         res.status(200).json({
             success: true,
-            count: tasks.length, // Number of tasks in the current page
-            total: totalTasks,   // Total number of tasks matching criteria
+            count: tasks.length, 
+            total: totalTasks,   
             page: page,
             limit: limit,
-            data: tasks          // The actual array of task objects
+            data: tasks         
         });
     } catch (err) {
         // Log and send a 500 Internal Server Error if something goes wrong
@@ -60,10 +60,10 @@ exports.getTask = async (req, res) => {
             return res.status(404).json({ success: false, error: 'Task not found' });
         }
 
-        // Send successful response with the found task
+        
         res.status(200).json({ success: true, data: task });
     } catch (err) {
-        // Handle specific error for invalid MongoDB ObjectId format
+        
         if (err.kind === 'ObjectId') {
             return res.status(400).json({ success: false, error: 'Invalid Task ID format' });
         }
@@ -77,10 +77,10 @@ exports.getTask = async (req, res) => {
 // @access  Public
 exports.createTask = async (req, res) => {
     try {
-        // Create a new task document using the data from the request body
+        console.log(req.body);
         const task = await Task.create(req.body);
 
-        // Send successful response with the newly created task
+        
         res.status(201).json({ // 201 Created status for successful resource creation
             success: true,
             message: 'Task created successfully',
@@ -108,8 +108,8 @@ exports.updateTask = async (req, res) => {
             return res.status(404).json({ success: false, error: 'Task not found' });
         }
 
-        // Update the task document. {new: true} returns the updated document.
-        // {runValidators: true} ensures schema validators are run on update operations.
+        
+        
         task = await Task.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true
@@ -144,7 +144,7 @@ exports.deleteTask = async (req, res) => {
             return res.status(404).json({ success: false, error: 'Task not found' });
         }
 
-        // Delete the task. Mongoose 6+ uses deleteOne or deleteMany
+        
         await Task.deleteOne({ _id: req.params.id });
 
         res.status(200).json({ success: true, message: 'Task removed successfully' }); // Or 204 No Content
@@ -157,9 +157,6 @@ exports.deleteTask = async (req, res) => {
     }
 };
 
-// @desc    Update a task's completion status
-// @route   PATCH /api/tasks/:id/status
-// @access  Public
 exports.updateTaskStatus = async (req, res) => {
     try {
         let task = await Task.findById(req.params.id);
@@ -190,19 +187,16 @@ exports.updateTaskStatus = async (req, res) => {
     }
 };
 
-// @desc    Search tasks by title or description
-// @route   GET /api/tasks/search
-// @access  Public
+
 exports.searchTasks = async (req, res) => {
     try {
-        const { query } = req.query; // Get search query from URL query parameters
+        const { query } = req.query; 
 
         if (!query) {
             return res.status(400).json({ success: false, error: 'Search query is required' });
         }
 
-        // Use MongoDB's $or operator for searching across multiple fields
-        // $regex for pattern matching, $options: 'i' for case-insensitive search
+        
         const tasks = await Task.find({
             $or: [
                 { title: { $regex: query, $options: 'i' } },

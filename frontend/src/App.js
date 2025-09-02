@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import TaskForm from './components/TaskForm.js';
 import TaskList from './components/TaskList.js';
-import './App.css'; // Main app styling
+import './App.css'; 
+
 
 function App() {
     const [tasks, setTasks] = useState([]);
@@ -14,7 +15,7 @@ function App() {
     // Base URL for API calls. IMPORTANT: Change this for deployment!
     // For local development, 'proxy' in package.json handles this.
     // For Netlify deployment, replace this with your Render backend URL.
-   const API_BASE_URL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000';
+   const API_BASE_URL = process.env.REACT_APP_API_URL ||'http://localhost:5000';
     const fetchTasks = useCallback(async () => {
         setLoading(true);
         setError(null);
@@ -33,7 +34,7 @@ function App() {
             }
 
             const response = await axios.get(url, { params });
-            // The actual tasks data is usually in response.data.data from our backend structure
+            
             setTasks(response.data.data);
         } catch (err) {
             console.error('Failed to fetch tasks:', err);
@@ -41,7 +42,7 @@ function App() {
         } finally {
             setLoading(false);
         }
-    }, [filterStatus, searchQuery, API_BASE_URL]); // Re-fetch when filter, search query, or base URL changes
+    }, [filterStatus, searchQuery]); // Re-fetch when filter, search query, or base URL changes
 
     useEffect(() => {
         fetchTasks();
@@ -137,9 +138,9 @@ function App() {
                 {loading && <div className="message loading">Loading tasks...</div>}
                 {error && <div className="message error">Error: {error}</div>}
 
-                {!loading && !error && tasks.length === 0 && (
+                {/* {!loading && !error && tasks && (
                     <div className="message no-tasks">No tasks found.</div>
-                )}
+                )} */}
 
                 <TaskList
                     tasks={tasks}
