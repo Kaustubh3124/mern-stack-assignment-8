@@ -49,7 +49,7 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
    
-    console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`.yellow.bold);
+    console.log(`Server running in  mode on port ${PORT}`.yellow.bold);
     console.log('Backend ready to receive API requests!'.green.bold);
     console.log(`Access tasks API at: http://localhost:${PORT}/api/tasks`);
 });
