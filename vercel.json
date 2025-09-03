@@ -2,7 +2,6 @@
   "version": 2,
   "builds": [
     {
-<<<<<<< HEAD
       "src": "backend/server.js",
       "use": "@vercel/node"
     },
@@ -21,19 +20,4 @@
       "destination": "/frontend/build/$1"
     }
   ]
-=======
-      "src": "server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "server.js"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
->>>>>>> dc92b85 (ok)
 }
